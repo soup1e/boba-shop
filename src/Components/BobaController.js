@@ -5,22 +5,34 @@ import Header from "./Header";
 import BobaForm from "./BobaForm";
 
 function BobaController() {
-  const [totalBoba, setTotalBoba] = useState(130);
+  const [totalPearl, setTotalPearl] = useState(52);
+  const [totalLychee, setTotalLychee] = useState(75);
+  const [totalPudding, setTotalPudding] = useState(36);
+  const [totalRedBean, setTotalRedBean] = useState(40);
 
   const restockBoba = () => {
-    const updatedBobaCount = totalBoba + 130;
-    setTotalBoba(updatedBobaCount);
+    const updatedBobaCount = totalPearl + 130;
+    setTotalPearl(updatedBobaCount);
   };
 
   const sellDrink = (drinkName) => {
     const drink = drinks.find((drink) => drink.name === drinkName);
 
     // make if other toppings
-    if (drink.topping === "pearl" && totalBoba > 0) {
-      const updatedBobaCount = totalBoba - 1;
-      setTotalBoba(updatedBobaCount);
+    if (drink.topping === "pearl" && totalPearl > 0) {
+      const updatedPearlCount = totalPearl - 1;
+      setTotalPearl(updatedPearlCount);
+    } else if (drink.topping === "lychee" && totalLychee > 0) {
+      const updatedLycheeCount = totalLychee - 1;
+      setTotalLychee(updatedLycheeCount);
+    } else if (drink.topping === "pudding" && totalPudding > 0) {
+      const updatedPuddingCount = totalPudding - 1;
+      setTotalPudding(updatedPuddingCount);
+    } else if (drink.topping === "redBean" && totalRedBean > 0) {
+      const updatedRedBean = totalRedBean - 1;
+      setTotalRedBean(updatedRedBean);
     } else {
-      alert(`Out Of ${drink.topping}`);
+      alert(`Out Of ${drink.topping.toUpperCase()}!`);
     }
   };
 
@@ -57,13 +69,14 @@ function BobaController() {
 
   return (
     <React.Fragment>
-      <Header totalBoba={totalBoba} />
-      <BobaList
-        drinks={drinks}
-        restockBoba={restockBoba}
-        sellDrink={sellDrink}
+      <Header
+        totalPearl={totalPearl}
+        totalLychee={totalLychee}
+        totalPudding={totalPudding}
+        totalRedBean={totalRedBean}
       />
-      <BobaForm setDrinks={setDrinks} />
+      <BobaList drinks={drinks} sellDrink={sellDrink} />
+      <BobaForm restockBoba={restockBoba} />
       <BobaDetail />
     </React.Fragment>
   );

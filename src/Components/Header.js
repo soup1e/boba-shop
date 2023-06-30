@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header({ totalBoba }) {
+function Header({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
   return (
     <React.Fragment>
       <div className="navbar bg-base-300 ">
@@ -11,7 +11,16 @@ function Header({ totalBoba }) {
         </div>
         <div className="flex-none">
           <div className="btn btn-ghost normal-case text-l">
-            Boba Stock: {totalBoba}
+            Boba Stock: {totalPearl}
+          </div>
+          <div className="btn btn-ghost normal-case text-l">
+            Lychee Stock: {totalLychee}
+          </div>
+          <div className="btn btn-ghost normal-case text-l">
+            Pudding Stock: {totalPudding}
+          </div>
+          <div className="btn btn-ghost normal-case text-l">
+            Red Bean Stock: {totalRedBean}
           </div>
         </div>
       </div>
