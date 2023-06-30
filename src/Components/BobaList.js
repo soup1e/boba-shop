@@ -31,7 +31,7 @@ function BobaList({ drinks, sellDrink }) {
 }
 
 BobaList.propTypes = {
-  drinks: PropTypes.object.isRequired,
+  drinks: PropTypes.array.isRequired,
   sellDrink: PropTypes.func.isRequired,
 };
 

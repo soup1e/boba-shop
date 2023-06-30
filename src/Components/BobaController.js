@@ -6,10 +6,10 @@ import BobaForm from "./BobaForm";
 import PropTypes from "prop-types";
 
 function BobaController() {
-  const [totalPearl, setTotalPearl] = useState(52);
-  const [totalLychee, setTotalLychee] = useState(75);
-  const [totalPudding, setTotalPudding] = useState(36);
-  const [totalRedBean, setTotalRedBean] = useState(40);
+  const [totalPearl, setTotalPearl] = useState(130);
+  const [totalLychee, setTotalLychee] = useState(260);
+  const [totalPudding, setTotalPudding] = useState(390);
+  const [totalRedBean, setTotalRedBean] = useState(520);
 
   const restock = (type) => {
     if (type === "pearl") {
@@ -107,11 +107,15 @@ function BobaController() {
     {
       name: "Matcha Milk Tea",
       price: 5.99,
-      topping: "redBean",
+      topping: "red bean",
       description:
         "Matcha Milk tea with premium matcha powder added gives the bubble tea a subtle bitterness that pairs perfectly with sweet red bean",
     },
   ]);
+  const totalPearlBags = Math.ceil(totalPearl / 130);
+  const totalLycheeBags = Math.ceil(totalLychee / 130);
+  const totalPuddingBags = Math.ceil(totalPudding / 130);
+  const totalRedBeanBags = Math.ceil(totalRedBean / 130);
 
   return (
     <React.Fragment>
@@ -121,9 +125,16 @@ function BobaController() {
         totalPudding={totalPudding}
         totalRedBean={totalRedBean}
       />
-      <BobaList drinks={drinks} sellDrink={sellDrink} />
-      <BobaForm restock={restock} />
-      <BobaDetail />
+      <div className="container mx-auto mt-8">
+        <BobaList drinks={drinks} sellDrink={sellDrink} />
+        <BobaForm restock={restock} />
+        <BobaDetail
+          totalPearlBags={totalPearlBags}
+          totalLycheeBags={totalLycheeBags}
+          totalPuddingBags={totalPuddingBags}
+          totalRedBeanBags={totalRedBeanBags}
+        />
+      </div>
     </React.Fragment>
   );
 }
