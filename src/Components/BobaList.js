@@ -1,6 +1,6 @@
 import React from "react";
 
-function BobaList({ drinks, restockBoba }) {
+function BobaList({ drinks, restockBoba, sellDrink }) {
   return (
     <React.Fragment>
       <div className="flex justify-center items-center">
@@ -16,7 +16,12 @@ function BobaList({ drinks, restockBoba }) {
               <p className="text-sm font-thin">{drink.description}</p>
               <div className="card-actions flex justify-between items-center mt-4">
                 <h4 className="text-base font-normal">${drink.price}</h4>
-                <button className="btn btn-accent py-2 px-10">Sell</button>
+                <button
+                  onClick={() => sellDrink(drink.name)}
+                  className="btn btn-accent py-2 px-10"
+                >
+                  Sell
+                </button>
               </div>
             </div>
           </div>

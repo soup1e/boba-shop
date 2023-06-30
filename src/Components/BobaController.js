@@ -12,6 +12,18 @@ function BobaController() {
     setTotalBoba(updatedBobaCount);
   };
 
+  const sellDrink = (drinkName) => {
+    const drink = drinks.find((drink) => drink.name === drinkName);
+
+    // make if other toppings
+    if (drink.topping === "pearl" && totalBoba > 0) {
+      const updatedBobaCount = totalBoba - 1;
+      setTotalBoba(updatedBobaCount);
+    } else {
+      alert(`Out Of ${drink.topping}`);
+    }
+  };
+
   const [drinks, setDrinks] = useState([
     {
       name: "Thai Pearl Milk Tea",
@@ -48,9 +60,8 @@ function BobaController() {
       <Header totalBoba={totalBoba} />
       <BobaList
         drinks={drinks}
-        setDrinks={setDrinks}
-        setTotalBoba={setTotalBoba}
         restockBoba={restockBoba}
+        sellDrink={sellDrink}
       />
       <BobaForm setDrinks={setDrinks} />
       <BobaDetail />
