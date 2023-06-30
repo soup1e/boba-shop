@@ -5,6 +5,13 @@ import Header from "./Header";
 import BobaForm from "./BobaForm";
 
 function BobaController() {
+  const [totalBoba, setTotalBoba] = useState(130);
+
+  const restockBoba = () => {
+    const updatedBobaCount = totalBoba + 130;
+    setTotalBoba(updatedBobaCount);
+  };
+
   const [drinks, setDrinks] = useState([
     {
       name: "Thai Pearl Milk Tea",
@@ -38,8 +45,13 @@ function BobaController() {
 
   return (
     <React.Fragment>
-      <Header />
-      <BobaList drinks={drinks} setDrinks={setDrinks} />
+      <Header totalBoba={totalBoba} />
+      <BobaList
+        drinks={drinks}
+        setDrinks={setDrinks}
+        setTotalBoba={setTotalBoba}
+        restockBoba={restockBoba}
+      />
       <BobaForm setDrinks={setDrinks} />
       <BobaDetail />
     </React.Fragment>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Header() {
+function Header({ totalBoba }) {
   return (
     <React.Fragment>
       <div className="navbar bg-base-300 ">
@@ -11,7 +11,7 @@ function Header() {
         </div>
         <div className="flex-none">
           <div className="btn btn-ghost normal-case text-l">
-            Boba Remaining: {}
+            Boba Stock: {totalBoba}
           </div>
         </div>
       </div>
