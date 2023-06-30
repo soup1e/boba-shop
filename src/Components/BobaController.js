@@ -5,9 +5,32 @@ import Header from "./Header";
 import BobaForm from "./BobaForm";
 
 function BobaController() {
+  const [listVisible, setListVisible] = useState(true);
+  const [detailFormVisible, setDetailFormVisible] = useState(false);
+
+  const toggleFullVisibility = () => {
+    if (!listVisible || !detailFormVisible) {
+      setListVisible(true);
+      setDetailFormVisible(true);
+    } else {
+      setListVisible(true);
+      setDetailFormVisible(false);
+    }
+  };
+
+  const toggleView = () => {
+    if (!listVisible) {
+      setListVisible(true);
+      setDetailFormVisible(false);
+    } else {
+      setListVisible(false);
+      setDetailFormVisible(true);
+    }
+  };
+
   const [totalPearl, setTotalPearl] = useState(131);
   const [totalLychee, setTotalLychee] = useState(260);
-  const [totalPudding, setTotalPudding] = useState(390);
+  const [totalPudding, setTotalPudding] = useState(274);
   const [totalRedBean, setTotalRedBean] = useState(200);
 
   const restock = (type) => {
@@ -47,7 +70,7 @@ function BobaController() {
     }
   };
 
-  const [drinks, setDrinks] = useState([
+  const drinks = [
     {
       name: "Thai Milk Tea",
       price: 4.99,
@@ -110,7 +133,7 @@ function BobaController() {
       description:
         "Matcha Milk tea with premium matcha powder added gives the bubble tea a subtle bitterness that pairs perfectly with sweet red bean",
     },
-  ]);
+  ];
 
   return (
     <React.Fragment>
@@ -119,16 +142,22 @@ function BobaController() {
         totalLychee={totalLychee}
         totalPudding={totalPudding}
         totalRedBean={totalRedBean}
+        toggleFullVisibility={toggleFullVisibility}
+        toggleView={toggleView}
       />
       <div className="container mx-auto mt-8">
-        <BobaList drinks={drinks} sellDrink={sellDrink} />
-        <BobaForm restock={restock} />
-        <BobaDetail
-          totalPearl={totalPearl}
-          totalLychee={totalLychee}
-          totalPudding={totalPudding}
-          totalRedBean={totalRedBean}
-        />
+        {listVisible && <BobaList drinks={drinks} sellDrink={sellDrink} />}
+        {detailFormVisible && (
+          <React.Fragment>
+            <BobaDetail
+              totalPearl={totalPearl}
+              totalLychee={totalLychee}
+              totalPudding={totalPudding}
+              totalRedBean={totalRedBean}
+            />
+            <BobaForm restock={restock} />
+          </React.Fragment>
+        )}
       </div>
     </React.Fragment>
   );

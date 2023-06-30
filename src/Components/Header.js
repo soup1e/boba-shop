@@ -1,13 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function Header({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
+function Header({
+  totalPearl,
+  totalLychee,
+  totalPudding,
+  totalRedBean,
+  toggleFullVisibility,
+  toggleView,
+}) {
   return (
     <React.Fragment>
       <div className="navbar bg-base-300 ">
         <div className="flex-1">
           <button className="btn btn-ghost normal-case text-xl">
             Boba Shop
+          </button>
+        </div>
+        <div className="flex-1">
+          <button onClick={toggleFullVisibility} className="btn">
+            Show All
+          </button>
+          <button onClick={toggleView} className="btn">
+            Toggle View
           </button>
         </div>
         <div className="flex-none">
@@ -34,6 +49,7 @@ Header.propTypes = {
   totalLychee: PropTypes.number.isRequired,
   totalPudding: PropTypes.number.isRequired,
   totalRedBean: PropTypes.number.isRequired,
+  toggleFullVisibility: PropTypes.func.isRequired,
 };
 
 export default Header;
