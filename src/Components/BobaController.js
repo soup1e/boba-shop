@@ -7,9 +7,9 @@ import PropTypes from "prop-types";
 
 function BobaController() {
   const [totalPearl, setTotalPearl] = useState(130);
-  const [totalLychee, setTotalLychee] = useState(260);
-  const [totalPudding, setTotalPudding] = useState(390);
-  const [totalRedBean, setTotalRedBean] = useState(520);
+  const [totalLychee, setTotalLychee] = useState(130);
+  const [totalPudding, setTotalPudding] = useState(130);
+  const [totalRedBean, setTotalRedBean] = useState(130);
 
   const restock = (type) => {
     if (type === "pearl") {
@@ -40,7 +40,7 @@ function BobaController() {
     } else if (drink.topping === "pudding" && totalPudding > 0) {
       const updatedPuddingCount = totalPudding - 1;
       setTotalPudding(updatedPuddingCount);
-    } else if (drink.topping === "redBean" && totalRedBean > 0) {
+    } else if (drink.topping === "red bean" && totalRedBean > 0) {
       const updatedRedBean = totalRedBean - 1;
       setTotalRedBean(updatedRedBean);
     } else {
@@ -112,10 +112,6 @@ function BobaController() {
         "Matcha Milk tea with premium matcha powder added gives the bubble tea a subtle bitterness that pairs perfectly with sweet red bean",
     },
   ]);
-  const totalPearlBags = Math.ceil(totalPearl / 130);
-  const totalLycheeBags = Math.ceil(totalLychee / 130);
-  const totalPuddingBags = Math.ceil(totalPudding / 130);
-  const totalRedBeanBags = Math.ceil(totalRedBean / 130);
 
   return (
     <React.Fragment>
@@ -129,10 +125,10 @@ function BobaController() {
         <BobaList drinks={drinks} sellDrink={sellDrink} />
         <BobaForm restock={restock} />
         <BobaDetail
-          totalPearlBags={totalPearlBags}
-          totalLycheeBags={totalLycheeBags}
-          totalPuddingBags={totalPuddingBags}
-          totalRedBeanBags={totalRedBeanBags}
+          totalPearl={totalPearl}
+          totalLychee={totalLychee}
+          totalPudding={totalPudding}
+          totalRedBean={totalRedBean}
         />
       </div>
     </React.Fragment>

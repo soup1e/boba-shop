@@ -1,35 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function BobaDetail({
-  totalPearlBags,
-  totalLycheeBags,
-  totalPuddingBags,
-  totalRedBeanBags,
-}) {
+function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
   const toppings = [
-    { name: "Pearl", bags: totalPearlBags },
-    { name: "Lychee", bags: totalLycheeBags },
-    { name: "Pudding", bags: totalPuddingBags },
-    { name: "Red Bean", bags: totalRedBeanBags },
+    { name: "Pearl", bags: Math.ceil(totalPearl / 130) },
+    { name: "Lychee", bags: Math.ceil(totalLychee / 130) },
+    { name: "Pudding", bags: Math.ceil(totalPudding / 130) },
+    { name: "Red Bean", bags: Math.ceil(totalRedBean / 130) },
   ];
 
-  return (
-    <div className="container mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Boba Stock Detail</h2>
-      <div className="grid grid-cols-2 gap-4">
-        {toppings.map((topping) => (
-          <div
-            key={topping.name}
-            className="bg-gray-900 p-4 rounded-xl text-white"
-          >
-            <h3 className="text-lg font-semibold mb-2">{topping.name}</h3>
-            <p className="text-sm">Bags: {topping.bags}</p>
-            <p className="text-sm">Total Units: {topping.bags * 130}</p>
+  const toppingCards = [];
+
+  toppings.forEach((topping) => {
+    for (let i = 0; i < topping.bags; i++) {
+      const card = (
+        <div className="card bg-gray-900 shadow-xl" key={`${topping.name}${i}`}>
+          <div className="card-body rounded-xl">
+            <h2 className="card-title text-2xl">
+              {topping.name} Bag #{i + 1}
+            </h2>
           </div>
-        ))}
+        </div>
+      );
+      toppingCards.push(card);
+    }
+  });
+
+  return (
+    <React.Fragment>
+      <h2 className="text-2xl mt-10 font-bold flex justify-center">Stock:</h2>
+      <div className="mx-auto m-4 max-w-screen-xl">
+        <div className="grid grid-cols-6 gap-4">{toppingCards}</div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
 
