@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 function BobaForm({ restock }) {
   const [selectedTopping, setSelectedTopping] = useState("");
@@ -31,5 +32,9 @@ function BobaForm({ restock }) {
     </React.Fragment>
   );
 }
+
+BobaForm.propTypes = {
+  restock: PropTypes.func.isRequired,
+};
 
 export default BobaForm;

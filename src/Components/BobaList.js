@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function BobaList({ drinks, sellDrink }) {
   return (
@@ -28,5 +29,10 @@ function BobaList({ drinks, sellDrink }) {
     </React.Fragment>
   );
 }
+
+BobaList.propTypes = {
+  drinks: PropTypes.object.isRequired,
+  sellDrink: PropTypes.func.isRequired,
+};
 
 export default BobaList;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Header({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
   return (
@@ -27,5 +28,12 @@ function Header({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
     </React.Fragment>
   );
 }
+
+Header.propTypes = {
+  totalPearl: PropTypes.number.isRequired,
+  totalLychee: PropTypes.number.isRequired,
+  totalPudding: PropTypes.number.isRequired,
+  totalRedBean: PropTypes.number.isRequired,
+};
 
 export default Header;

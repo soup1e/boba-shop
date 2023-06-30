@@ -3,6 +3,7 @@ import BobaDetail from "./BobaDetail";
 import BobaList from "./BobaList";
 import Header from "./Header";
 import BobaForm from "./BobaForm";
+import PropTypes from "prop-types";
 
 function BobaController() {
   const [totalPearl, setTotalPearl] = useState(52);
@@ -126,5 +127,12 @@ function BobaController() {
     </React.Fragment>
   );
 }
+
+BobaController.propTypes = {
+  totalPearl: PropTypes.number.isRequired,
+  totalLychee: PropTypes.number.isRequired,
+  totalPudding: PropTypes.number.isRequired,
+  totalRedBean: PropTypes.number.isRequired,
+};
 
 export default BobaController;
