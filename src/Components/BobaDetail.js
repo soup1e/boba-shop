@@ -3,10 +3,30 @@ import PropTypes from "prop-types";
 
 function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
   const toppings = [
-    { name: "Pearl", bags: Math.ceil(totalPearl / 130) },
-    { name: "Lychee", bags: Math.ceil(totalLychee / 130) },
-    { name: "Pudding", bags: Math.ceil(totalPudding / 130) },
-    { name: "Red Bean", bags: Math.ceil(totalRedBean / 130) },
+    {
+      name: "Pearl",
+      bags: Math.floor(totalPearl / 130),
+      remainder: totalPearl % 130,
+      color: "gray",
+    },
+    {
+      name: "Lychee",
+      bags: Math.floor(totalLychee / 130),
+      remainder: totalLychee % 130,
+      color: "yellow",
+    },
+    {
+      name: "Pudding",
+      bags: Math.floor(totalPudding / 130),
+      remainder: totalPudding % 130,
+      color: "green",
+    },
+    {
+      name: "Red Bean",
+      bags: Math.floor(totalRedBean / 130),
+      remainder: totalRedBean % 130,
+      color: "red",
+    },
   ];
 
   const toppingCards = [];
@@ -14,15 +34,34 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
   toppings.forEach((topping) => {
     for (let i = 0; i < topping.bags; i++) {
       const card = (
-        <div className="card bg-gray-900 shadow-xl" key={`${topping.name}${i}`}>
+        <div
+          className={`card bg-${topping.color}-900 shadow-xl`}
+          key={`${topping.name}${i}`}
+        >
           <div className="card-body rounded-xl">
             <h2 className="card-title text-2xl">
               {topping.name} Bag #{i + 1}
             </h2>
+            <p className="text-sm font-thin">130 out of 130</p>
           </div>
         </div>
       );
       toppingCards.push(card);
+    }
+
+    if (topping.remainder > 0) {
+      const remainderCard = (
+        <div
+          className={`card bg-gray-700 shadow-xl`}
+          key={`Opened ${topping.name}`}
+        >
+          <div className="card-body rounded-xl">
+            <h2 className="card-title text-2xl">Opened {topping.name} bag</h2>
+            <p className="text-sm font-thin">{topping.remainder} out of 130</p>
+          </div>
+        </div>
+      );
+      toppingCards.unshift(remainderCard);
     }
   });
 
@@ -37,10 +76,10 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
 }
 
 BobaDetail.propTypes = {
-  totalPearlBags: PropTypes.number.isRequired,
-  totalLycheeBags: PropTypes.number.isRequired,
-  totalPuddingBags: PropTypes.number.isRequired,
-  totalRedBeanBags: PropTypes.number.isRequired,
+  totalPearl: PropTypes.number.isRequired,
+  totalLychee: PropTypes.number.isRequired,
+  totalPudding: PropTypes.number.isRequired,
+  totalRedBean: PropTypes.number.isRequired,
 };
 
 export default BobaDetail;

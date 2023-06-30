@@ -3,13 +3,12 @@ import BobaDetail from "./BobaDetail";
 import BobaList from "./BobaList";
 import Header from "./Header";
 import BobaForm from "./BobaForm";
-import PropTypes from "prop-types";
 
 function BobaController() {
-  const [totalPearl, setTotalPearl] = useState(130);
-  const [totalLychee, setTotalLychee] = useState(130);
-  const [totalPudding, setTotalPudding] = useState(130);
-  const [totalRedBean, setTotalRedBean] = useState(130);
+  const [totalPearl, setTotalPearl] = useState(131);
+  const [totalLychee, setTotalLychee] = useState(260);
+  const [totalPudding, setTotalPudding] = useState(390);
+  const [totalRedBean, setTotalRedBean] = useState(200);
 
   const restock = (type) => {
     if (type === "pearl") {
@@ -134,12 +133,5 @@ function BobaController() {
     </React.Fragment>
   );
 }
-
-BobaController.propTypes = {
-  totalPearl: PropTypes.number.isRequired,
-  totalLychee: PropTypes.number.isRequired,
-  totalPudding: PropTypes.number.isRequired,
-  totalRedBean: PropTypes.number.isRequired,
-};
 
 export default BobaController;

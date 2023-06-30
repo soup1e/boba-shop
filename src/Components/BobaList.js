@@ -6,7 +6,7 @@ function BobaList({ drinks, sellDrink }) {
     <React.Fragment>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mx-auto max-w-screen-xl">
         {drinks.map((drink) => (
-          <div key={drink.name} className="card bg-gray-900 shadow-xl">
+          <div key={drink.name} className="card bg-gray-800 shadow-xl">
             <div className="card-body rounded-xl">
               <h2 className="card-title text-2xl">
                 {drink.name} with{" "}
