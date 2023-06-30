@@ -50,6 +50,7 @@ Header.propTypes = {
   totalPudding: PropTypes.number.isRequired,
   totalRedBean: PropTypes.number.isRequired,
   toggleFullVisibility: PropTypes.func.isRequired,
+  toggleView: PropTypes.func.isRequired,
 };
 
 export default Header;

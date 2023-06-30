@@ -52,7 +52,6 @@ function BobaController() {
   const sellDrink = (drinkName) => {
     const drink = drinks.find((drink) => drink.name === drinkName);
 
-    // make if other toppings
     if (drink.topping === "pearl" && totalPearl > 0) {
       const updatedPearlCount = totalPearl - 1;
       setTotalPearl(updatedPearlCount);
