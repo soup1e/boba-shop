@@ -11,13 +11,13 @@ function Header({
 }) {
   return (
     <React.Fragment>
-      <div className="navbar bg-base-300 ">
+      <div className="navbar bg-gray-800 text-gray-200">
         <div className="flex-1">
           <button className="btn btn-ghost normal-case text-xl">
             Boba Shop
           </button>
         </div>
-        <div className="flex-1">
+        <div className="flex-none gap-2">
           <button onClick={toggleFullVisibility} className="btn">
             Show All
           </button>
@@ -25,17 +25,17 @@ function Header({
             Toggle View
           </button>
         </div>
-        <div className="flex-none">
-          <div className="btn btn-ghost normal-case text-l">
+        <div className="flex-none hidden lg:flex">
+          <div className="btn btn-ghost normal-case text-md">
             Boba Stock: {totalPearl}
           </div>
-          <div className="btn btn-ghost normal-case text-l">
+          <div className="btn btn-ghost normal-case text-md">
             Lychee Stock: {totalLychee}
           </div>
-          <div className="btn btn-ghost normal-case text-l">
+          <div className="btn btn-ghost normal-case text-md">
             Pudding Stock: {totalPudding}
           </div>
-          <div className="btn btn-ghost normal-case text-l">
+          <div className="btn btn-ghost normal-case text-md">
             Red Bean Stock: {totalRedBean}
           </div>
         </div>

@@ -7,25 +7,25 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
       name: "Pearl",
       bags: Math.floor(totalPearl / 130),
       remainder: totalPearl % 130,
-      color: "gray",
+      color: "bg-blue-900",
     },
     {
       name: "Lychee",
       bags: Math.floor(totalLychee / 130),
       remainder: totalLychee % 130,
-      color: "yellow",
+      color: "bg-yellow-900",
     },
     {
       name: "Pudding",
       bags: Math.floor(totalPudding / 130),
       remainder: totalPudding % 130,
-      color: "green",
+      color: "bg-green-900",
     },
     {
       name: "Red Bean",
       bags: Math.floor(totalRedBean / 130),
       remainder: totalRedBean % 130,
-      color: "red",
+      color: "bg-red-900",
     },
   ];
 
@@ -35,10 +35,10 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
     for (let i = 0; i < topping.bags; i++) {
       const card = (
         <div
-          className={`card bg-${topping.color}-900 shadow-xl`}
+          className={`card ${topping.color} shadow-xl`}
           key={`${topping.name}${i}`}
         >
-          <div className="card-body rounded-xl">
+          <div className="card-body text-white rounded-xl">
             <h2 className="card-title text-2xl">
               {topping.name} Bag #{i + 1}
             </h2>
@@ -52,7 +52,7 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
     if (topping.remainder > 0) {
       const remainderCard = (
         <div
-          className={`card bg-gray-700 shadow-xl`}
+          className={`card text-white bg-gray-700 shadow-xl`}
           key={`Opened ${topping.name}`}
         >
           <div className="card-body rounded-xl">
@@ -67,9 +67,11 @@ function BobaDetail({ totalPearl, totalLychee, totalPudding, totalRedBean }) {
 
   return (
     <React.Fragment>
-      <h2 className="text-2xl mt-10 font-bold flex justify-center">Stock:</h2>
-      <div className="mx-auto m-4 max-w-screen-xl">
-        <div className="grid grid-cols-6 gap-4">{toppingCards}</div>
+      <h2 className="text-2xl mt-10 font-bold flex justify-center text-gray-600">
+        Stock:
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto p-4 m-4 max-w-screen-xl">
+        {toppingCards}
       </div>
     </React.Fragment>
   );
