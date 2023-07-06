@@ -10,12 +10,12 @@ function BobaForm({ restock }) {
 
   return (
     <React.Fragment>
-      <div className="flex flex-col justify-center items-center gap-4">
+      <div className="flex flex-col justify-center text-gray-700 items-center gap-4">
         <h1 className="text-2xl mt-10 font-bold">Restock:</h1>
         <select
           value={selectedTopping}
           onChange={handleDropdownChange}
-          className="select w-64 mt-4 outline outline-accent focus:outline-pink-300"
+          className="select w-64 mt-4 outline outline-accent bg-gray-200 focus:outline-pink-300"
         >
           <option value="">Select Topping</option>
           <option value="pearl">Pearl</option>
@@ -25,7 +25,7 @@ function BobaForm({ restock }) {
         </select>
         <button
           onClick={() => restock(selectedTopping)}
-          className="btn btn-accent btn-wide mt-4"
+          className="btn btn-accent btn-wide my-4"
         >
           Restock
         </button>
